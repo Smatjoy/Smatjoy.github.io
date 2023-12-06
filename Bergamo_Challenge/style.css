@@ -1,0 +1,113 @@
+body {
+    font-family: 'Tisa', Tisa Font;
+    text-align: center;
+    background-color: #ff000090;
+    margin: 0;
+    padding: 0;
+}
+
+#game-container {
+    width: 85%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #eaff00;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+#game-container h1 {
+    font-size: 35px;
+    color: transparent;
+    background-image: linear-gradient(90deg, rgb(186, 186, 65) 46%, red 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    display: inline-block;
+}
+
+#game-container {
+    width: 90%;
+    /* Modifica la larghezza per schermi più piccoli */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    max-height: 400px;
+    /* Imposta l'altezza massima desiderata per le immagini */
+    max-width: 200%;
+    /* Imposta la larghezza massima desiderata per le immagini */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #d74423;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+button:hover {
+    background-color: #d74423cd;
+}
+
+.option {
+    padding: 10px;
+    margin: 5px;
+    background-color: #e0e0e0;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: #c0c0c0;
+}
+
+@font-face {
+    font-family: 'Tisa Font';
+    src: local('Tisa_Regular.woff2'),
+        url('./media/font/TisaSansPro-Medium.woff2') format('woff2'),
+        url('./media/font/Tisa\ Sans\ Pro\ Medium.woff') format('woff');
+    font-weight: 400;
+}
+
+.options button.selected {
+    background-color: #ff2f00ea;
+    color: #fff;
+}
+
+/* info button */
+.info-container {
+    position: relative;
+}
+
+#info-button {
+    position: absolute;
+    top: -160px;
+    left: 2%;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.info-window {
+    display: none;
+    position: absolute;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    top: -90px;
+    left: 5%;
+    width: 470px;
+}
+
+#close-button {
+    margin-top: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
