@@ -1,3 +1,4 @@
+"use strict"
 let selectedOptionIndex = null;
 let currentLevel = 1;
 let points = 0;
@@ -92,8 +93,7 @@ function selectOption(index) {
   const buttons = document.querySelectorAll(".options button");
   buttons.forEach((button) => button.classList.remove("selected"));
 
-  // Aggiungi la classe "selected" al pulsante selezionato
-  buttons[index].classList.add("selected");
+  checkAnswer();
 }
 
 function checkAnswer() {
@@ -101,11 +101,16 @@ function checkAnswer() {
     const userAnswer = questions[currentLevel - 1].options[selectedOptionIndex];
     const correctAnswer =
       questions[currentLevel - 1].options[
-      questions[currentLevel - 1].correctIndex
+        questions[currentLevel - 1].correctIndex
       ];
 
     if (userAnswer === correctAnswer) {
       // La risposta è corretta
+
+      // Riproduce il suono della risposta corretta
+      const correctAudio = document.getElementById("correctAudio");
+      correctAudio.play();
+
       console.log("Risposta corretta!");
       currentLevel = currentLevel + 1; // Incrementa il livello
 
@@ -136,17 +141,26 @@ function checkAnswer() {
         buttons[index].textContent = option;
       });
     } else {
+      // Riproduce il suono della risposta sbagliata
+      const wrongAudio = document.getElementById("wrongAudio");
+      wrongAudio.play();
+      
       // La risposta è sbagliata
-      console.log("Risposta errata, riprova");
+      alert("Risposta errata, meno due punti. Riprova");
 
-      if (currentLevel !== 1) // Non si può perdere al primo livello
-      points = points - 1; // Decrementa il punteggio, ma non scendere mai sotto di 0
+      if (currentLevel !== 1){
+        // Non si può perdere al primo livello
+        points = points - 1; // Decrementa il punteggio
+      }
 
       if (points <= 0 && currentLevel !== 1) {
         // controlla se ha perso e se non sei al primo livello
+        const gameOverAudio = document.getElementById("gameOver");
+        gameOverAudio.play();
         alert("Hai perso! Hai perso tutti i punti");
         location.reload(); // Ricarica la pagina
       }
+      
 
       // Aggiorna il punteggio
       document.getElementById("informations").textContent =
@@ -162,7 +176,6 @@ function checkAnswer() {
 function victory() {
   const buttons = document.querySelectorAll(".options button");
   // Nascondo i bottoni
-  document.getElementById("checkButton").style.display = "none";
   document.getElementById("question").style.display = "none";
   buttons.forEach((button) => (button.style.display = "none"));
 
@@ -170,15 +183,26 @@ function victory() {
   const newButtonsContainer = document.createElement("div");
   newButtonsContainer.id = "newButtonsContainer";
 
-  // Creo il bottone per rigiocare
+  // Aggiungo il bottone per rigiocare
   const playAgainButton = document.createElement("button");
   playAgainButton.textContent = "Rigioca";
   playAgainButton.onclick = function () {
     location.reload(); // Ricarica la pagina
   };
+  const homeButton = document.createElement("button");
+homeButton.id = "homeButton";
+homeButton.textContent = "Torna alla Home";
+homeButton.onclick = function () {
+  window.location.href = './index.html'; // Reindirizza alla Home
+};
+
 
   // Aggiungo il bottone al nuovo elemento div
   newButtonsContainer.appendChild(playAgainButton);
+  newButtonsContainer.appendChild(homeButton);
+
+  
+
 
   // Aggiungo il nuovo elemento div al DOM, inserendolo all'interno di #game-container
   const gameContainer = document.getElementById("game-container");
@@ -190,21 +214,30 @@ function victory() {
   // Aggiorno le informazioni
   document.getElementById("informations").textContent =
     "Hai vinto! Hai totalizzato " + points + " punti.";
+  
+  // Mostra il pulsante "Torna alla Home"
+  document.getElementById("homeButton").style.display = "block";
 }
 
+
 //funzione per selezionare il livello
-function levelSelection() {
+/*function levelSelection() {
   const selectedLevel = prompt("Inserisci il livello desiderato:");
 
   // Verifica che l'utente abbia inserito un numero valido tra 1 e 10
-  if (selectedLevel !== null && !isNaN(selectedLevel) && selectedLevel >= 1 && selectedLevel <= 10) {
+  if (
+    selectedLevel !== null &&
+    !isNaN(selectedLevel) &&
+    selectedLevel >= 1 &&
+    selectedLevel <= 10
+  ) {
     startLevel(parseInt(selectedLevel, 10));
   } else {
     alert("Inserisci un numero valido compreso tra 1 e 10.");
   }
-}
+}*/
 
-function startLevel(level) {
+/*function startLevel(level) {
   // Aggiorna la variabile currentLevel con il livello selezionato
   currentLevel = level;
 
@@ -212,15 +245,16 @@ function startLevel(level) {
   const currentLevelIndex = currentLevel - 1;
 
   //Mostra i bottoni per la domanda e le risposte
-  document.getElementById("checkButton").style.display = "block";
   document.getElementById("question").style.display = "block";
   buttons.forEach((button) => (button.style.display = "block"));
 
   // Aggiorna il percorso dell'immagine con id "game-image"
-  document.getElementById("game-image").src = "./media/livello" + currentLevel + ".png";
+  document.getElementById("game-image").src =
+    "./media/livello" + currentLevel + ".png";
 
   // Aggiorna il testo del paragrafo con id "question"
-  document.getElementById("question").textContent = questions[currentLevelIndex].text;
+  document.getElementById("question").textContent =
+    questions[currentLevelIndex].text;
 
   // Aggiorna le opzioni dei bottoni
   const buttons = document.querySelectorAll(".options button");
@@ -232,20 +266,21 @@ function startLevel(level) {
   buttons.forEach((button) => button.classList.remove("selected"));
 
   // Aggiorna il punteggio
-  document.getElementById("informations").textContent = "Livello: " + currentLevel + " Punteggio: " + points;
+  document.getElementById("informations").textContent =
+    "Livello: " + currentLevel + " Punteggio: " + points;
 
   // Rimuovi i bottoni venuti fuori dalla vittoria
   const newButtonsContainer = document.getElementById("newButtonsContainer");
   if (newButtonsContainer) {
     newButtonsContainer.remove();
   }
-}
+} */
 
 //info button
-document.getElementById('info-button').addEventListener('click', function () {
-  document.getElementById('info-window').style.display = 'block';
+document.getElementById("info-button").addEventListener("click", function () {
+  document.getElementById("info-window").style.display = "block";
 });
 
-document.getElementById('close-button').addEventListener('click', function () {
-  document.getElementById('info-window').style.display = 'none';
+document.getElementById("close-button").addEventListener("click", function () {
+  document.getElementById("info-window").style.display = "none";
 });
