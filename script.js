@@ -101,7 +101,7 @@ function checkAnswer() {
     const userAnswer = questions[currentLevel - 1].options[selectedOptionIndex];
     const correctAnswer =
       questions[currentLevel - 1].options[
-        questions[currentLevel - 1].correctIndex
+      questions[currentLevel - 1].correctIndex
       ];
 
     if (userAnswer === correctAnswer) {
@@ -144,13 +144,13 @@ function checkAnswer() {
       // Riproduce il suono della risposta sbagliata
       const wrongAudio = document.getElementById("wrongAudio");
       wrongAudio.play();
-      
+
       // La risposta è sbagliata
       alert("Risposta errata, meno due punti. Riprova");
 
-      if (currentLevel !== 1){
+      if (currentLevel !== 1) {
         // Non si può perdere al primo livello
-        points = points - 1; // Decrementa il punteggio
+        points = points - 2; // Decrementa il punteggio
       }
 
       if (points <= 0 && currentLevel !== 1) {
@@ -160,7 +160,7 @@ function checkAnswer() {
         alert("Hai perso! Hai perso tutti i punti");
         location.reload(); // Ricarica la pagina
       }
-      
+
 
       // Aggiorna il punteggio
       document.getElementById("informations").textContent =
@@ -174,6 +174,10 @@ function checkAnswer() {
 
 //in caso di vittoria, quando il livello arriva a 11
 function victory() {
+  // Riproduce il suono della risposta sbagliata
+  const win = document.getElementById("win");
+  win.play();
+  
   const buttons = document.querySelectorAll(".options button");
   // Nascondo i bottoni
   document.getElementById("question").style.display = "none";
@@ -190,19 +194,15 @@ function victory() {
     location.reload(); // Ricarica la pagina
   };
   const homeButton = document.createElement("button");
-homeButton.id = "homeButton";
-homeButton.textContent = "Torna alla Home";
-homeButton.onclick = function () {
-  window.location.href = './index.html'; // Reindirizza alla Home
-};
-
+  homeButton.id = "homeButton";
+  homeButton.textContent = "Torna alla Home";
+  homeButton.onclick = function () {
+    window.location.href = './index.html'; // Reindirizza alla Home
+  };
 
   // Aggiungo il bottone al nuovo elemento div
   newButtonsContainer.appendChild(playAgainButton);
   newButtonsContainer.appendChild(homeButton);
-
-  
-
 
   // Aggiungo il nuovo elemento div al DOM, inserendolo all'interno di #game-container
   const gameContainer = document.getElementById("game-container");
@@ -214,67 +214,10 @@ homeButton.onclick = function () {
   // Aggiorno le informazioni
   document.getElementById("informations").textContent =
     "Hai vinto! Hai totalizzato " + points + " punti.";
-  
+
   // Mostra il pulsante "Torna alla Home"
   document.getElementById("homeButton").style.display = "block";
 }
-
-
-//funzione per selezionare il livello
-/*function levelSelection() {
-  const selectedLevel = prompt("Inserisci il livello desiderato:");
-
-  // Verifica che l'utente abbia inserito un numero valido tra 1 e 10
-  if (
-    selectedLevel !== null &&
-    !isNaN(selectedLevel) &&
-    selectedLevel >= 1 &&
-    selectedLevel <= 10
-  ) {
-    startLevel(parseInt(selectedLevel, 10));
-  } else {
-    alert("Inserisci un numero valido compreso tra 1 e 10.");
-  }
-}*/
-
-/*function startLevel(level) {
-  // Aggiorna la variabile currentLevel con il livello selezionato
-  currentLevel = level;
-
-  // Ottieni l'indice del livello corrente
-  const currentLevelIndex = currentLevel - 1;
-
-  //Mostra i bottoni per la domanda e le risposte
-  document.getElementById("question").style.display = "block";
-  buttons.forEach((button) => (button.style.display = "block"));
-
-  // Aggiorna il percorso dell'immagine con id "game-image"
-  document.getElementById("game-image").src =
-    "./media/livello" + currentLevel + ".png";
-
-  // Aggiorna il testo del paragrafo con id "question"
-  document.getElementById("question").textContent =
-    questions[currentLevelIndex].text;
-
-  // Aggiorna le opzioni dei bottoni
-  const buttons = document.querySelectorAll(".options button");
-  questions[currentLevelIndex].options.forEach((option, index) => {
-    buttons[index].textContent = option;
-  });
-
-  // Rimuovi la classe "selected" da tutti i bottoni
-  buttons.forEach((button) => button.classList.remove("selected"));
-
-  // Aggiorna il punteggio
-  document.getElementById("informations").textContent =
-    "Livello: " + currentLevel + " Punteggio: " + points;
-
-  // Rimuovi i bottoni venuti fuori dalla vittoria
-  const newButtonsContainer = document.getElementById("newButtonsContainer");
-  if (newButtonsContainer) {
-    newButtonsContainer.remove();
-  }
-} */
 
 //info button
 document.getElementById("info-button").addEventListener("click", function () {

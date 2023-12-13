@@ -1,49 +1,48 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bergamo Challenge</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="./media/Bergamo-Stemma.png" />
-  </head>
 
-  <body>
-    <div id="game-container">
-      <h1>Bergamo Challenge</h1>
-      <p>Testa la Tua Conoscenza della Città</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bergamo Challenge</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="./media/Bergamo-Stemma.png" />
+</head>
 
-      <!-- info button -->
-      <div class="info-container" style="top: 39px;">
-        <button id="info-button">i</button>
-        <div class="info-window" id="info-window">
-          <p>
-            "Bergamo Challenge" è un coinvolgente gioco interattivo che mette
-            alla prova la tua conoscenza della pittoresca città di Bergamo. Il
-            gioco presenta una serie di immagini rappresentanti vari luoghi
-            iconici di Bergamo, accompagnate da tre opzioni di risposta. La
-            sfida consiste nel riconoscere correttamente il luogo raffigurato e
-            selezionare la risposta corrispondente tra le opzioni fornite.
-            <br /><br />
-            Se la risposta è corretta, il giocatore guadagna due punti e passa
-            al livello successivo. Se la risposta è sbagliata, il giocatore
-            perde un punto. Se si arriva a un punteggio negativo, si perde.
-          </p>
-          <button id="close-button">Chiudi</button>
-        </div>
+<body>
+  <div id="game-container">
+    <!-- info button -->
+    <button id="info-button">i</button>
+    <div class="info-container">
+      <div class="info-window" id="info-window">
+        <p>
+          "Bergamo Challenge" è un coinvolgente gioco interattivo che mette
+          alla prova la tua conoscenza della pittoresca città di Bergamo. Il
+          gioco presenta una serie di immagini rappresentanti vari luoghi
+          iconici di Bergamo, accompagnate da tre opzioni di risposta. La
+          sfida consiste nel riconoscere correttamente il luogo raffigurato e
+          selezionare la risposta corrispondente tra le opzioni fornite.
+          <br /><br />
+          Se la risposta è corretta, il giocatore guadagna due punti e passa
+          al livello successivo. Se la risposta è sbagliata, il giocatore
+          perde un punto. Se si arriva a un punteggio negativo, si perde.
+        </p>
+        <button id="close-button">Chiudi</button>
       </div>
-
-      <!-- Bottone per iniziare a giocare -->
-      <button id="startButton" onclick="window.location.href='./game.html'">
-        Inizia a Giocare
-      </button>
-      <img
-        id="startImage"
-        src="./media/Bergamo-Stemma.png"
-        alt="Stemma di Bergamo"
-      />
     </div>
 
-    <script src="script.js"></script>
-  </body>
+    <h1>Bergamo Challenge</h1>
+    <p>Di Mattia Samanni 4ID</p>
+    <p style="font-size: 30px; font-weight: bold;">Testa la Tua Conoscenza della Città</p>
+
+    <!-- Bottone per iniziare a giocare -->
+    <button id="startButton" onclick="window.location.href='./game.html'">
+      Inizia a Giocare
+    </button>
+    <img id="startImage" src="./media/Bergamo-Stemma.png" alt="Stemma di Bergamo" />
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
 </html>

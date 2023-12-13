@@ -27,18 +27,18 @@ body {
 /* Game */
 #game-container {
   width: 85%;
-  margin: 20px auto;
+  margin: 10px auto;
   padding: 20px;
   background-color: #eaff00;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
 
 #game-container h1 {
   font-size: 35px;
-  color: transparent;
   background-image: linear-gradient(90deg, rgb(186, 186, 65) 46%, red 50%);
-  background-clip: text;
+   /*Servono per il gradient */
+   color: transparent;
+   background-clip: text;
   -webkit-background-clip: text;
   display: inline-block;
 }
@@ -48,13 +48,18 @@ body {
   /* Modifica la larghezza per schermi più piccoli */
 }
 
+#game-image {
+  width: 80%;
+  height: 80%;
+  margin-top: 20px;
+  max-width: 85%;
+  max-height: 85%;
+}
+
 img {
-  max-width: 100%;
   height: auto;
   margin-bottom: 20px;
   border-radius: 10px;
-  max-height: 400px;
-  /* Imposta l'altezza massima desiderata per le immagini */
   max-width: 200%;
   /* Imposta la larghezza massima desiderata per le immagini */
 }
@@ -74,9 +79,9 @@ button:hover {
 }
 
 #question {
-    margin-top: -5px;
-    margin-bottom: 20px;
-    font-size: 23px;
+  margin-top: -5px;
+  margin-bottom: 20px;
+  font-size: 23px;
 }
 
 #homeButton {
@@ -91,10 +96,6 @@ button:hover {
   margin: 5px;
   background-color: #e0e0e0;
   cursor: pointer;
-}
-
-.option:hover {
-  background-color: #c0c0c0;
 }
 
 @font-face {
@@ -112,13 +113,12 @@ button:hover {
 
 #info-button {
   position: absolute;
-  top: -160px;
-  left: 2%;
+  top: 8%;
+  left: 8%;
   border-radius: 50%;
   width: 40px;
   height: 40px;
   font-size: 20px;
-  cursor: pointer;
 }
 
 .info-window {
@@ -128,13 +128,14 @@ button:hover {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  top: -90px;
-  left: 5%;
+  top: 100px;
+  left: 8%;
   width: 470px;
+  max-width: fit-content;
+  max-height: fit-content;
 }
 
 #close-button {
-  margin-top: 10px;
+  margin-top: 7px;
   padding: 10px;
-  cursor: pointer;
 }

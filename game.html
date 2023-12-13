@@ -10,18 +10,16 @@
 </head>
 
 <body>
-  <audio id="correctAudio" src="./media/sound/Correct.mp3"></audio>
-  <audio id="wrongAudio" src="./media/sound/Wrong.mp3"></audio>
-  <audio id="gameOver" src="./media/sound/Super_Mario_Game_Over.mp3"></audio>
+  <audio id="correctAudio" src="./media/sound/Correct.mp3" preload="auto"></audio>
+  <audio id="wrongAudio" src="./media/sound/Wrong.mp3" preload="auto"></audio>
+  <audio id="gameOver" src="./media/sound/Super_Mario_Game_Over.mp3" preload="auto"></audio>
+  <audio id="win" src="./media/sound/Final_Fantasy_Win.mp3" preload="auto"></audio>
 
   <div id="game-container">
-    <h1>Bergamo Challenge</h1>
-    <p>Testa la Tua Conoscenza della Città</p>
-    <p id="informations">Livello: 1 Punteggio: 0</p>
 
     <!-- info button -->
+    <button id="info-button">i</button>
     <div class="info-container">
-      <button id="info-button">i</button>
       <div class="info-window" id="info-window">
         <p>
           "Bergamo Challenge" è un coinvolgente gioco interattivo che mette alla prova la tua conoscenza della
@@ -34,6 +32,12 @@
         <button id="close-button">Chiudi</button>
       </div>
     </div>
+
+    <h1>Bergamo Challenge</h1>
+    <p>Testa la Tua Conoscenza della Città</p>
+    <p id="informations">Livello: 1 Punteggio: 0</p>
+
+
 
     <img id="game-image" src="./media/livello1.png" alt="Immagine del gioco" />
     <p id="question">Come si chiama questa piazza?</p>
