@@ -90,7 +90,7 @@ function selectOption(index) {
   selectedOptionIndex = index;
 
   // Rimuovi la classe "selected" da tutti i bottoni
-  const buttons = document.querySelectorAll(".options button");
+  const buttons = document.querySelectorAll(".options button"); // Seleziona tutti i tag button
   buttons.forEach((button) => button.classList.remove("selected"));
 
   checkAnswer();
@@ -98,11 +98,8 @@ function selectOption(index) {
 
 function checkAnswer() {
   if (selectedOptionIndex !== null) {
-    const userAnswer = questions[currentLevel - 1].options[selectedOptionIndex];
-    const correctAnswer =
-      questions[currentLevel - 1].options[
-      questions[currentLevel - 1].correctIndex
-      ];
+    const userAnswer = questions[currentLevel - 1].options[selectedOptionIndex]; // Opzione selezionata dall'utente
+    const correctAnswer = questions[currentLevel - 1].options[questions[currentLevel - 1].correctIndex];
 
     if (userAnswer === correctAnswer) {
       // La risposta è corretta
@@ -111,8 +108,8 @@ function checkAnswer() {
       const correctAudio = document.getElementById("correctAudio");
       correctAudio.play();
 
-      console.log("Risposta corretta!");
-      currentLevel = currentLevel + 1; // Incrementa il livello
+      //console.log("Risposta corretta!");
+      currentLevel++; // Incrementa il livello
 
       if (currentLevel >= 11) {
         // controlla se ha vinto e finito i livelli
@@ -135,22 +132,23 @@ function checkAnswer() {
       document.getElementById("informations").textContent =
         "Livello: " + currentLevel + " Punteggio: " + points;
 
-      // Cambia le opzioni dei bottoni
-      const buttons = document.querySelectorAll(".options button");
+      // Le opzioni dei pulsanti vengono aggiornate in base alle opzioni associate alla domanda corrente.
+      const buttons = document.querySelectorAll(".options button"); // Seleziona tutti i tag button
       questions[currentLevel - 1].options.forEach((option, index) => {
         buttons[index].textContent = option;
       });
+
     } else {
       // Riproduce il suono della risposta sbagliata
       const wrongAudio = document.getElementById("wrongAudio");
       wrongAudio.play();
 
       // La risposta è sbagliata
-      alert("Risposta errata, meno due punti. Riprova");
+      alert("Risposta errata, meno un punto. Riprova");
 
       if (currentLevel !== 1) {
         // Non si può perdere al primo livello
-        points = points - 2; // Decrementa il punteggio
+        points--;; // Decrementa il punteggio
       }
 
       if (points <= 0 && currentLevel !== 1) {
@@ -177,7 +175,7 @@ function victory() {
   // Riproduce il suono della risposta sbagliata
   const win = document.getElementById("win");
   win.play();
-  
+
   const buttons = document.querySelectorAll(".options button");
   // Nascondo i bottoni
   document.getElementById("question").style.display = "none";
@@ -185,7 +183,7 @@ function victory() {
 
   // Creo un nuovo elemento div per i nuovi bottoni
   const newButtonsContainer = document.createElement("div");
-  newButtonsContainer.id = "newButtonsContainer";
+  newButtonsContainer.id = "newButtonsContainer"; // Assegno un id al nuovo elemento div
 
   // Aggiungo il bottone per rigiocare
   const playAgainButton = document.createElement("button");
@@ -220,7 +218,7 @@ function victory() {
 }
 
 //info button
-document.getElementById("info-button").addEventListener("click", function () {
+document.getElementById("info-button").addEventListener("click", function () { // Al click del bottone "Info"
   document.getElementById("info-window").style.display = "block";
 });
 
